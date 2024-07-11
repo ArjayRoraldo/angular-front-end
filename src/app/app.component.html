@@ -18,15 +18,15 @@
         <span nz-icon nzType="file"></span>
         <span><a routerLink="/dashboard">Dashboard</a></span>
       </li>
-      <li nz-submenu nzOpen nzTitle="Workbench" nzIcon="form">
+      <li nz-submenu nzTitle="Workbench" nzIcon="form">
         <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="false">
           <li nz-submenu nzTitle="Genesis" nzIcon="dashboard">
             <ul>
               <li nz-menu-item nzMatchRouter>
-                <a>Project</a>
+                <a routerLink="/workbench/project">Project</a>
               </li>
               <li nz-menu-item nzMatchRouter>
-                <a>Studio</a>
+                <a routerLink="/workbench/studio">Studio</a>
               </li>
             </ul>
           </li>

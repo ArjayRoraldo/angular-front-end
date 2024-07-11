@@ -7,6 +7,23 @@ const routes: Routes = [
     loadChildren: () =>
       import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
   },
+  {
+    path: 'workbench',
+    loadChildren: () =>
+      import('./workbench/workbench.module').then((m) => m.WorkbenchModule),
+  },
+  {
+    path: 'project',
+    loadChildren: () =>
+      import('./workbench/genesis/project/project.module').then(
+        (m) => m.ProjectModule
+      ),
+  },
+  {
+    path: '**',
+    redirectTo: '/dashboard',
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
