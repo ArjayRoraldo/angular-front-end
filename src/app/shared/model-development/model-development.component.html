@@ -1,0 +1,46 @@
+<nz-layout class="layout">
+  <nz-content>
+    <div class="inner-content">
+      <button
+        *ngIf="selectedMenu === 'development'"
+        nz-button
+        [nzType]="'primary'"
+        (click)="showModal()"
+      >
+        <span i18n="add">Add</span>
+      </button>
+
+      <div>
+        <nz-table
+          #basicTable
+          nzShowPagination
+          [nzPageSize]="5"
+          [nzData]="listOfData"
+        >
+          <thead>
+            <tr>
+              <th i18n="name">Name</th>
+              <th i18n="code">Code</th>
+              <th i18n="desc">Description</th>
+              <th i18n="created">Created</th>
+              <th i18n="action">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of basicTable.data">
+              <td>{{ data.name }}</td>
+              <td>{{ data.code }}</td>
+              <td>{{ data.description }}</td>
+              <td>{{ data.created }}</td>
+              <td>
+                <a (click)="showModal()" style="color: #000" i18n="edit"
+                  >Edit | Member</a
+                >
+              </td>
+            </tr>
+          </tbody>
+        </nz-table>
+      </div>
+    </div>
+  </nz-content>
+</nz-layout>

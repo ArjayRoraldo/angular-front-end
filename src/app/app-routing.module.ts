@@ -19,16 +19,6 @@ const routes: Routes = [
     },
   },
   {
-    path: 'project',
-    loadChildren: () =>
-      import('./workbench/genesis/project/project.module').then(
-        (m) => m.ProjectModule
-      ),
-    data: {
-      breadcrumb: 'Project',
-    },
-  },
-  {
     path: '**',
     redirectTo: '/dashboard',
     pathMatch: 'full',

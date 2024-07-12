@@ -1,39 +1,51 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { ModelDevelopmentComponent } from '../shared/model-development/model-development.component';
+import { ModelValidationComponent } from '../shared/model-validation/model-validation.component';
 import { ProjectComponent } from './genesis/project/project.component';
 import { StudioComponent } from './genesis/studio/studio.component';
-import { WorkbenchComponent } from './workbench.component';
 
 const routes: Routes = [
   {
-    path: 'workbench',
-    component: WorkbenchComponent,
+    path: 'genesis',
     data: {
-      breadcrumb: 'Workbench',
+      breadcrumb: 'Genesis',
     },
     children: [
       {
-        path: 'genesis',
-        component: WorkbenchComponent,
+        path: 'project',
+        component: ProjectComponent,
         data: {
-          breadcrumb: 'Genesis',
+          breadcrumb: 'Project',
         },
         children: [
           {
-            path: 'project',
-            component: ProjectComponent,
+            path: 'development',
+            component: ModelDevelopmentComponent,
             data: {
-              breadcrumb: 'Project',
+              breadcrumb: 'Model Development',
             },
           },
           {
-            path: 'studio',
-            component: StudioComponent,
+            path: 'validation',
+            component: ModelValidationComponent,
             data: {
-              breadcrumb: 'Studio',
+              breadcrumb: 'Model Validation',
             },
           },
+          {
+            path: '',
+            redirectTo: '/workbench/genesis/project/development',
+            pathMatch: 'full',
+          },
         ],
+      },
+      {
+        path: 'studio',
+        component: StudioComponent,
+        data: {
+          breadcrumb: 'Studio',
+        },
       },
     ],
   },

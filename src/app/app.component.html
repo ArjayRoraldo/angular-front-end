@@ -14,27 +14,38 @@
       </a>
     </div>
     <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="false">
-      <li nz-menu-item>
+      <li nzMatchRouter nz-menu-item>
         <span nz-icon nzType="file"></span>
         <span><a routerLink="/dashboard">Dashboard</a></span>
       </li>
-      <li nz-submenu nzTitle="Workbench" nzIcon="form">
+      <li nzOpen nz-submenu nzTitle="Workbench" nzIcon="form">
         <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="false">
-          <li nz-submenu nzTitle="Genesis" nzIcon="dashboard">
+          <li nzOpen nz-submenu nzTitle="Genesis" nzIcon="dashboard">
             <ul>
               <li nz-menu-item nzMatchRouter>
-                <a routerLink="/workbench/project">Project</a>
+                <a routerLink="/workbench/genesis/project">Project</a>
               </li>
               <li nz-menu-item nzMatchRouter>
-                <a routerLink="/workbench/studio">Studio</a>
+                <a routerLink="/workbench/genesis/studio">Studio</a>
               </li>
             </ul>
           </li>
         </ul>
       </li>
-      <li nz-menu-item>
-        <span nz-icon nzType="file"></span>
-        <span>Admin</span>
+
+      <li nz-submenu nzTitle="Admin" nzIcon="form">
+        <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="false">
+          <li nzOpen nz-submenu nzTitle="Genesis" nzIcon="dashboard">
+            <ul>
+              <li nz-menu-item nzMatchRouter>
+                <a>Project</a>
+              </li>
+              <li nz-menu-item nzMatchRouter>
+                <a>Studio</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
       </li>
     </ul>
   </nz-sider>

@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
+import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzFormModule } from 'ng-zorro-antd/form';
@@ -13,15 +14,21 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { AddFormComponent } from 'src/app/shared/add-form/add-form.component';
 import { CustomValidator } from 'src/app/shared/add-form/service/custom-validator.service';
+import { ModelDevelopmentComponent } from 'src/app/shared/model-development/model-development.component';
 import { AddDataService } from 'src/app/shared/service/add-data.service';
-import { ProjectRoutingModule } from './project-routing.module';
 import { ProjectComponent } from './project.component';
+import { RouterModule } from '@angular/router';
+import { ModelValidationComponent } from 'src/app/shared/model-validation/model-validation.component';
 
 @NgModule({
-  declarations: [ProjectComponent, AddFormComponent],
+  declarations: [
+    ProjectComponent,
+    AddFormComponent,
+    ModelDevelopmentComponent,
+    ModelValidationComponent,
+  ],
   imports: [
     CommonModule,
-    ProjectRoutingModule,
     NzLayoutModule,
     NzButtonModule,
     NzMenuModule,
@@ -34,6 +41,8 @@ import { ProjectComponent } from './project.component';
     NzSelectModule,
     NzInputModule,
     MatDialogModule,
+    NzBreadCrumbModule,
+    RouterModule,
   ],
   providers: [CustomValidator, AddDataService],
 })

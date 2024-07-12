@@ -11,48 +11,12 @@ import { AddDataService } from 'src/app/shared/service/add-data.service';
 })
 export class ProjectComponent {
   selectedMenu: string = 'development';
-  listOfData: Data[] = [];
-  checked = false;
-  loading = false;
-  indeterminate = false;
-  listOfCurrentPageData: readonly Data[] = [];
-  setOfCheckedId = new Set<number>();
-  isVisible = false;
 
-  constructor(
-    @Inject(AddDataService) private addService: AddDataService,
-    private modalService: NzModalService
-  ) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    this.addService.getListOfData().subscribe((data: Data[]) => {
-      console.log(data);
-      this.listOfData = data;
-    });
-  }
+  ngOnInit(): void {}
 
   onMenuClick(item: string): void {
     this.selectedMenu = item;
-  }
-
-  showModal(): void {
-    const modalRef: NzModalRef = this.modalService.create({
-      nzTitle: 'Add Genesis Project',
-      nzContent: AddFormComponent,
-      nzFooter: null,
-      nzData: {
-        projectType: this.selectedMenu,
-      },
-    });
-  }
-
-  handleOk(): void {
-    console.log('Button ok clicked!');
-    this.isVisible = false;
-  }
-
-  handleCancel(): void {
-    console.log('Button cancel clicked!');
-    this.isVisible = false;
   }
 }
