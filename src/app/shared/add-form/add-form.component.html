@@ -1,111 +1,115 @@
-<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
-  <nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email"
-      >Name</nz-form-label
-    >
-    <nz-form-control
-      [nzSm]="14"
-      [nzXs]="24"
-      nzErrorTip="The input is not valid E-mail!"
-    >
-      <input nz-input formControlName="email" id="email" />
-    </nz-form-control>
-  </nz-form-item>
-  <nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password" nzRequired
-      >Password</nz-form-label
-    >
-    <nz-form-control
-      [nzSm]="14"
-      [nzXs]="24"
-      nzErrorTip="Please input your password!"
-    >
-      <input
-        nz-input
-        type="password"
-        id="password"
-        formControlName="password"
-        (ngModelChange)="updateConfirmValidator()"
-      />
-    </nz-form-control>
-  </nz-form-item>
-  <nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="checkPassword" nzRequired
-      >Confirm Password</nz-form-label
-    >
-    <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorTpl">
-      <input
-        nz-input
-        type="password"
-        formControlName="checkPassword"
-        id="checkPassword"
-      />
-      <ng-template #errorTpl let-control>
-        <div *ngIf="control.errors?.['required']">
-          Please confirm your password!
-        </div>
-        <div *ngIf="control.errors?.['confirm']">
-          Two passwords that you enter is inconsistent!
-        </div>
-      </ng-template>
-    </nz-form-control>
-  </nz-form-item>
-  <nz-form-item>
-    <nz-form-label
-      [nzSm]="6"
-      [nzXs]="24"
-      nzFor="nickname"
-      nzRequired
-      nzTooltipTitle="What do you want other to call you"
-    >
-      <span>Nickname</span>
-    </nz-form-label>
-    <nz-form-control
-      [nzSm]="14"
-      [nzXs]="24"
-      nzErrorTip="Please input your nickname!"
-    >
-      <input nz-input id="nickname" formControlName="nickname" />
-    </nz-form-control>
-  </nz-form-item>
-  <nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="phoneNumber" nzRequired
-      >Phone Number</nz-form-label
-    >
-    <nz-form-control
-      [nzSm]="14"
-      [nzXs]="24"
-      [nzValidateStatus]="validateForm.controls['phoneNumber']"
-      nzErrorTip="Please input your phone number!"
-    >
-      <nz-input-group [nzAddOnBefore]="addOnBeforeTemplate">
-        <ng-template #addOnBeforeTemplate>
-          <nz-select formControlName="phoneNumberPrefix" class="phone-select">
-            <nz-option nzLabel="+86" nzValue="+86"></nz-option>
-            <nz-option nzLabel="+87" nzValue="+87"></nz-option>
-          </nz-select>
-        </ng-template>
-        <input formControlName="phoneNumber" id="'phoneNumber'" nz-input />
-      </nz-input-group>
-    </nz-form-control>
-  </nz-form-item>
-  <nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="website" nzRequired
-      >Website</nz-form-label
-    >
-    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input website!">
-      <input
-        nz-input
-        id="website"
-        formControlName="website"
-        placeholder="website"
-      />
-    </nz-form-control>
-  </nz-form-item>
+<div>
+  <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="projectType">
+        <span i18n>Project type</span>
+      </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input id="projectType" disabled [value]="selectedProject" />
+      </nz-form-control>
+    </nz-form-item>
 
-  <nz-form-item nz-row class="register-area">
-    <nz-form-control [nzSpan]="14" [nzOffset]="6">
-      <button nz-button nzType="primary">Register</button>
-    </nz-form-control>
-  </nz-form-item>
-</form>
+    <!-- Name -->
+    <nz-form-item>
+      <nz-form-label i18n [nzSm]="6" [nzXs]="24" nzRequired nzFor="name"
+        >Name</nz-form-label
+      >
+      <nz-form-control
+        nzErrorTip="Name is required."
+        nzHasFeedback
+        nzValidateStatus="error"
+        [nzValidateStatus]="getFormControlValidationStatus('name')"
+      >
+        <input nz-input id="name" formControlName="name" />
+      </nz-form-control>
+      <div
+        *ngIf="
+          validateForm.get('name')?.dirty || validateForm.get('name')?.touched
+        "
+      >
+        <div *ngIf="validateForm.get('name')?.hasError('required')">
+          Name is required.
+        </div>
+        <div *ngIf="validateForm.get('name')?.hasError('invalidName')">
+          Invalid characters in Name field.
+        </div>
+      </div>
+    </nz-form-item>
+
+    <!-- Code -->
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="code" nzRequired>
+        <span i18n>Code</span>
+      </nz-form-label>
+      <nz-form-control
+        nzErrorTip="Code is required."
+        nzHasFeedback
+        nzValidateStatus="error"
+        [nzValidateStatus]="getFormControlValidationStatus('code')"
+      >
+        <input nz-input id="code" formControlName="code" />
+      </nz-form-control>
+      <div
+        *ngIf="
+          validateForm.get('code')?.dirty || validateForm.get('code')?.touched
+        "
+      >
+        <div *ngIf="validateForm.get('code')?.hasError('required')">
+          Code is required.
+        </div>
+        <div *ngIf="validateForm.get('code')?.hasError('invalidCode')">
+          Invalid characters in Code field.
+        </div>
+      </div>
+    </nz-form-item>
+
+    <!-- Description -->
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="description">
+        <span i18n>Description</span>
+      </nz-form-label>
+      <nz-form-control
+        nzValidateStatus="error"
+        [nzValidateStatus]="getFormControlValidationStatus('description')"
+      >
+        <textarea
+          nz-input
+          id="description"
+          formControlName="description"
+        ></textarea>
+      </nz-form-control>
+      <div
+        *ngIf="
+          validateForm.get('description')?.dirty ||
+          validateForm.get('description')?.touched
+        "
+      >
+        <div
+          *ngIf="
+            validateForm.get('description')?.hasError('invalidDescription')
+          "
+        >
+          Invalid characters in Description field.
+        </div>
+      </div>
+    </nz-form-item>
+
+    <nz-form-item
+      *ngIf="selectedProject === 'Model Development'"
+      nz-row
+      class="Confirm"
+    >
+      <nz-form-control [nzSpan]="14" [nzOffset]="6">
+        <button
+          nz-button
+          nzType="primary"
+          type="submit"
+          [disabled]="validateForm.invalid"
+        >
+          Confirm
+        </button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</div>

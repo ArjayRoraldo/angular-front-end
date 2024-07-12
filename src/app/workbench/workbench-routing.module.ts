@@ -8,14 +8,32 @@ const routes: Routes = [
   {
     path: 'workbench',
     component: WorkbenchComponent,
+    data: {
+      breadcrumb: 'Workbench',
+    },
     children: [
       {
-        path: 'project',
-        component: ProjectComponent,
-      },
-      {
-        path: 'studio',
-        component: StudioComponent,
+        path: 'genesis',
+        component: WorkbenchComponent,
+        data: {
+          breadcrumb: 'Genesis',
+        },
+        children: [
+          {
+            path: 'project',
+            component: ProjectComponent,
+            data: {
+              breadcrumb: 'Project',
+            },
+          },
+          {
+            path: 'studio',
+            component: StudioComponent,
+            data: {
+              breadcrumb: 'Studio',
+            },
+          },
+        ],
       },
     ],
   },

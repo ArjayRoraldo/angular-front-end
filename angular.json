@@ -4,6 +4,10 @@
   "newProjectRoot": "projects",
   "projects": {
     "angular-front-end": {
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": { "it-IT": "src/locale/messages.it.xlf" }
+      },
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,6 +21,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "localize": ["it-IT"],
             "outputPath": "dist/angular-front-end",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -33,6 +38,7 @@
               }
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/theme.less",
               "src/styles.scss",
               "node_modules/ng-zorro-antd/ng-zorro-antd.min.css"
@@ -91,7 +97,10 @@
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.scss"],
+            "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/styles.scss"
+            ],
             "scripts": []
           }
         }
