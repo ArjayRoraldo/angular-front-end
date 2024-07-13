@@ -10,11 +10,11 @@
         >
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Code</th>
-              <th>Description</th>
-              <th>Created</th>
-              <th>Action</th>
+              <th i18n="@@name">Name</th>
+              <th i18n="@@code">Code</th>
+              <th i18n="@@desc">Description</th>
+              <th i18n="@@created">Created</th>
+              <th i18n="@@action">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -22,9 +22,11 @@
               <td>{{ data.name }}</td>
               <td>{{ data.code }}</td>
               <td>{{ data.description }}</td>
-              <td>{{ data.created }}</td>
+              <td>{{ data.created | date : "yyyy-MM-dd HH:mm:ss" }}</td>
               <td>
-                <a (click)="showModal()" style="color: #000">Edit | Member</a>
+                <a (click)="editModal(data)" style="color: #000" i18n="@@edit"
+                  >Edit | Member</a
+                >
               </td>
             </tr>
           </tbody>

@@ -1,5 +1,5 @@
 <div>
-  <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+  <form nz-form [formGroup]="validateForm" (ngSubmit)="updateForm()">
     <nz-form-item>
       <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="projectType">
         <span i18n="@@projectType">Project type</span>
@@ -31,7 +31,12 @@
         nzValidateStatus="error"
         [nzValidateStatus]="getFormControlValidationStatus('name')"
       >
-        <input nz-input id="name" formControlName="name" />
+        <input
+          [(ngModel)]="listOfData.name"
+          nz-input
+          id="name"
+          formControlName="name"
+        />
       </nz-form-control>
     </nz-form-item>
 
@@ -58,7 +63,12 @@
         nzValidateStatus="error"
         [nzValidateStatus]="getFormControlValidationStatus('code')"
       >
-        <input nz-input id="code" formControlName="code" />
+        <input
+          [(ngModel)]="listOfData.code"
+          nz-input
+          id="code"
+          formControlName="code"
+        />
       </nz-form-control>
     </nz-form-item>
 
@@ -79,6 +89,7 @@
       >
         <textarea
           nz-input
+          [(ngModel)]="listOfData.description"
           id="description"
           formControlName="description"
         ></textarea>

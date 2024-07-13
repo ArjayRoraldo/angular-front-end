@@ -16,17 +16,17 @@
     <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="false">
       <li nzMatchRouter nz-menu-item>
         <span nz-icon nzType="file"></span>
-        <span><a routerLink="/dashboard">Dashboard</a></span>
+        <span><a i18n="@@dashboard" routerLink="/dashboard">Dashboard</a></span>
       </li>
       <li nzOpen nz-submenu nzTitle="Workbench" nzIcon="form">
         <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="false">
           <li nzOpen nz-submenu nzTitle="Genesis" nzIcon="dashboard">
             <ul>
               <li nz-menu-item nzMatchRouter>
-                <a routerLink="/workbench/genesis/project">Project</a>
+                <a i18n="@@project" routerLink="/workbench/genesis/project">Project</a>
               </li>
               <li nz-menu-item nzMatchRouter>
-                <a routerLink="/workbench/genesis/studio">Studio</a>
+                <a i18n="@@studio" routerLink="/workbench/genesis/studio">Studio</a>
               </li>
             </ul>
           </li>
@@ -38,10 +38,10 @@
           <li nzOpen nz-submenu nzTitle="Genesis" nzIcon="dashboard">
             <ul>
               <li nz-menu-item nzMatchRouter>
-                <a>Project</a>
+                <a i18n="@@project">Project</a>
               </li>
               <li nz-menu-item nzMatchRouter>
-                <a>Studio</a>
+                <a i18n="@@studio">Studio</a>
               </li>
             </ul>
           </li>
@@ -59,8 +59,8 @@
             [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
           ></span>
         </span>
-        <span class="header-title">RDC PLATFORM</span>
-        <span class="username">USER 1</span>
+        <span i18n="@@headerTitle" class="header-title">RDC PLATFORM</span>
+        <span i18n="@@username" class="username">USER 1</span>
       </div>
     </nz-header>
     <nz-content>

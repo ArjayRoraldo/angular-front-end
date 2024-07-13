@@ -1,9 +1,9 @@
 export interface Data {
-  key: string;
+  key?: string;
   name: string;
   code: string;
   description: string;
-  created?: string;
+  created?: Date;
 }
 
 export interface ProjectType {

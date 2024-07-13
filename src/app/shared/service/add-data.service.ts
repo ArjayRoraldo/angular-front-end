@@ -24,7 +24,7 @@ export class AddDataService {
       key: `${index}`,
       name: `Project ${index + 1}`,
       code: `PROJECT_${index + 1}`,
-      description: `This is project ${index}`,
+      description: `This is project ${index + 1}`,
       created: this.getDate(new Date()),
     })));
   }
@@ -40,23 +40,31 @@ export class AddDataService {
     this.listOfDataSubject.next(updatedData);
   }
 
+  updateData(update: Data): void {
+    const currentData = this.listOfDataSubject.getValue();
+    update.created = this.getDate(new Date());
+
+    console.log('@@@@@@@@@', update);
+
+    const updatedData = currentData.map((item) =>
+      item.key === update.key ? update : item
+    );
+    console.log(updatedData);
+    this.listOfDataSubject.next(updatedData);
+  }
+
   private padTwoDigits(num: number): string {
     return num.toString().padStart(2, '0');
   }
 
-  private getDate(date: Date, dateDiveder: string = '-'): string {
-    return (
-      [
-        date.getFullYear(),
-        this.padTwoDigits(date.getMonth() + 1),
-        this.padTwoDigits(date.getDate()),
-      ].join(dateDiveder) +
-      ' ' +
-      [
-        this.padTwoDigits(date.getHours()),
-        this.padTwoDigits(date.getMinutes()),
-        this.padTwoDigits(date.getSeconds()),
-      ].join(':')
+  private getDate(date: Date): Date {
+    return new Date(
+      date.getFullYear(),
+      date.getMonth(),
+      date.getDate(),
+      date.getHours(),
+      date.getMinutes(),
+      date.getSeconds()
     );
   }
 }

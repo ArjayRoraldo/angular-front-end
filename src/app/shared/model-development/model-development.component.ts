@@ -3,6 +3,7 @@ import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
 import { Data } from 'src/app/model/data';
 import { AddFormComponent } from 'src/app/shared/add-form/add-form.component';
 import { AddDataService } from 'src/app/shared/service/add-data.service';
+import { EditComponent } from '../edit/edit.component';
 
 @Component({
   selector: 'app-model-development',
@@ -40,8 +41,17 @@ export class ModelDevelopmentComponent {
       nzTitle: 'Add Genesis Project',
       nzContent: AddFormComponent,
       nzFooter: null,
+    });
+  }
+
+  editModal(data: Data): void {
+    const modalRef: NzModalRef = this.modalService.create({
+      nzTitle: 'Edit Genesis Project',
+      nzContent: EditComponent,
+      nzFooter: null,
       nzData: {
-        projectType: this.selectedMenu,
+        data,
+        projectName: 'development',
       },
     });
   }

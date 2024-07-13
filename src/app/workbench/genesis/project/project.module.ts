@@ -19,11 +19,13 @@ import { AddDataService } from 'src/app/shared/service/add-data.service';
 import { ProjectComponent } from './project.component';
 import { RouterModule } from '@angular/router';
 import { ModelValidationComponent } from 'src/app/shared/model-validation/model-validation.component';
+import { EditComponent } from 'src/app/shared/edit/edit.component';
 
 @NgModule({
   declarations: [
     ProjectComponent,
     AddFormComponent,
+    EditComponent,
     ModelDevelopmentComponent,
     ModelValidationComponent,
   ],

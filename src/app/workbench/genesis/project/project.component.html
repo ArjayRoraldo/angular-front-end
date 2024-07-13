@@ -5,9 +5,11 @@
         nzMatchRouter
         nz-menu-item
         nzSelected
-        (click)="onMenuClick('development')"
       >
-        <a routerLink="/workbench/genesis/project/development">
+        <a
+          i18n="@@development"
+          routerLink="/workbench/genesis/project/development"
+        >
           Model Development</a
         >
       </li>
@@ -15,9 +17,11 @@
         nzSelected
         nzMatchRouter
         nz-menu-item
-        (click)="onMenuClick('validation')"
       >
-        <a routerLink="/workbench/genesis/project/validation">
+        <a
+          i18n="@@validation"
+          routerLink="/workbench/genesis/project/validation"
+        >
           Model Validation</a
         >
       </li>
